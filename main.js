@@ -4,24 +4,36 @@ brickImages.sort(() => Math.random() - 0.5);
 var bricksOpened = [];
 var count = 0;
 
-$('.brick').on('click', function(event) {
-    bricksOpened.push($(this));
-    var newSrc = 'brickImages' + '\\' + brickImages[Number($(this).attr('id'))]
-    $(this).attr('src', newSrc);
-    
-    setTimeout(function () {
-        if(bricksOpened.length === 2){
-            if(bricksOpened[0].attr('src') == bricksOpened[1].attr('src')){
-                bricksOpened[0].css('visibility', 'hidden');
-                bricksOpened[1].css('visibility', 'hidden');
-                bricksOpened = [];
-                count++;
-            }
-            else {
-                bricksOpened[0].attr('src','brickImages\\default.jfif');
-                bricksOpened[1].attr('src','brickImages\\default.jfif'); 
-                bricksOpened = [];
-            }
+var allBricks = document.getElementsByClassName('brick');
+
+for(let brick of allBricks){
+    brick.addEventListener('click', checkImage);
+}
+
+function checkImage(event){
+    var currentBrick = event.target;
+    var newSrc = 'brickImages' + '\\' + brickImages[Number(currentBrick.getAttribute('id'))]
+    bricksOpened.push(currentBrick);
+    currentBrick.setAttribute('src', newSrc);
+    currentBrick.removeEventListener('click', checkImage);
+    if(bricksOpened.length == 2){
+        checkIfBricksAreTheSame();
+    }
+}
+
+function checkIfBricksAreTheSame(){
+    setTimeout(function(){
+        if(bricksOpened[0].getAttribute('src') == bricksOpened[1].getAttribute('src')){
+            bricksOpened[0].style.visibility = 'hidden';
+            bricksOpened[1].style.visibility = 'hidden';
+            bricksOpened = [];
+        } 
+        else{
+            bricksOpened[0].setAttribute('src', 'brickImages\\default.jfif');
+            bricksOpened[1].setAttribute('src', 'brickImages\\default.jfif');
+            bricksOpened[0].addEventListener('click', checkImage);
+            bricksOpened[1].addEventListener('click', checkImage);
+            bricksOpened = [];
         }
-    }, 2500)
-})
+    }, 1000)
+}
