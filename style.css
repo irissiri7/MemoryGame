@@ -3,24 +3,79 @@ body{
     padding: 0px;
     margin: 0px;
     height: 100vh;
-    background-color: rgb(218, 218, 218);
+    background: linear-gradient(180deg, #d53369 0%, #daae51 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    color: whitesmoke;
+    font-family: 'Marck Script', cursive;
+    font-size: 120px;
+    padding: 0px;
+    margin: 10px;
+}
+
+main{
+    width: 60%;
+    min-height: 50%;
+    background-color:#ECC8AF;
+    border-radius: 10px;
+    position: relative;
+}
+
+#win-container{
+    background-color:#ECC8AF;
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    visibility: hidden;
+}
+
+button{
+    background-color: #d53369;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 50px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#d53369
 }
 
 #brick-container{
-    width: 50%;
-    height: 80%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin: auto;
+    padding: 20px;
     flex-wrap: wrap;
     perspective: 1000px;
 }
 
 .brick{
     position: relative;
-    border-radius: 5px;
     width: 150px;
     height: 150px;
-    margin: 10px;
+    margin:5px;
+    margin-bottom: 10px;
     transform-style: preserve-3d;
     transition: transform 0.5s;
 }
@@ -36,6 +91,7 @@ body{
 
 .back, 
 .front{
+    border-radius: 10px;
     position: absolute;
     width: 100%;
     height: 100%;
