@@ -3,9 +3,12 @@ let hasFlipped = false;
 let firstCard, secondCard;
 let pairsFound = 0;
 let lockGame = false;
+let clicks = 0;
 
 function flipCard(){
     if(lockGame) return;
+    clicks++;
+    updateClicks();
     if(!hasFlipped){
         firstCard = this;
         firstCard.classList.add('flip');
@@ -43,4 +46,30 @@ function checkMatch(){
     }
 }
 
+function resetGame(){
+    bricks.forEach(brick => brick.classList.remove('flip'));
+    bricks.forEach(brick => brick.addEventListener('click', flipCard));
+    shuffleBricks();
+    pairsFound = 0;
+    clicks = 0;
+    updateClicks();
+    document.getElementById('win-container').style.visibility = 'hidden';
+}
+
+function shuffleBricks(){
+    bricks.forEach(brick => {
+        let randomNum = Math.floor(Math.random() * 12);
+        console.log(randomNum);
+        brick.style.order = randomNum;
+    });
+}
+
+function updateClicks(){
+    var clicksContainer = document.getElementById("clicks");
+    clicksContainer.innerText = 'Clicks used:  ' + clicks;
+}
+
+updateClicks();
+shuffleBricks();
 bricks.forEach(brick => brick.addEventListener('click', flipCard));
+document.getElementById('play-again-btn').addEventListener('click', resetGame);

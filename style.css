@@ -6,22 +6,40 @@ body{
     background: linear-gradient(180deg, #d53369 0%, #daae51 100%);
     background-attachment: fixed;
     background-repeat: no-repeat;
+    font-family: 'Marck Script', cursive;
+    color: whitesmoke;
 }
 
 h1{
-    color: whitesmoke;
     font-size: 120px;
     text-align: center;
-    font-family: 'Marck Script', cursive;
+    margin: 20px;
+}
+
+h2{
+    color: whitesmoke;
+    font-size: 80px;
+    text-align: center;
     margin: 20px;
 }
 
 main{
-    width: 60%;
+    width: 50%;
     margin: 0 auto;
     background-color:#ECC8AF;
     border-radius: 10px;
     position: relative;
+    margin-bottom: 50px;
+}
+
+#click-container{
+    font-size: 30px;
+    color: #d53369;
+    padding: 10px;
+}
+
+p{
+    margin: 0px;
 }
 
 #win-container{
@@ -36,6 +54,7 @@ main{
     align-items: center;
     flex-direction: column;
     visibility: hidden;
+    margin-bottom: 50px;
 }
 
 button{
@@ -49,6 +68,7 @@ button{
     display: inline-block;
     font-size: 16px;
     margin: 0 auto;
+    font-family: 'Marck Script', cursive;
 }
 
 
@@ -94,4 +114,21 @@ button{
 
 .front{
     transform: rotateY(180deg);
+}
+
+
+@media only screen and (max-width: 600px) {
+    h1{
+        font-size: 60px;
+    }
+    .brick{
+        width: 75px;
+        height: 75px;
+    } 
+}
+
+@media only screen and (max-width: 1000px){
+    h2{
+        font-size: 40px;
+    }
 }
