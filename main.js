@@ -1,3 +1,5 @@
+import {confetti} from '/confetti.js';
+
 let bricks = document.querySelectorAll('.brick');
 let hasFlipped = false;
 let firstCard, secondCard;
@@ -32,6 +34,7 @@ function checkMatch(){
             setTimeout(()=>{
                 document.getElementById('win-container').style.visibility = 'visible';
             },1000)
+            confetti.start();
         }
     }
     else{
@@ -53,13 +56,13 @@ function resetGame(){
     pairsFound = 0;
     clicks = 0;
     updateClicks();
+    confetti.stop();
     document.getElementById('win-container').style.visibility = 'hidden';
 }
 
 function shuffleBricks(){
     bricks.forEach(brick => {
         let randomNum = Math.floor(Math.random() * 12);
-        console.log(randomNum);
         brick.style.order = randomNum;
     });
 }
