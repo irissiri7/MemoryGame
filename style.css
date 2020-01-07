@@ -91,6 +91,7 @@ button{
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform 0.5s;
+    user-select: none;
 }
 
 .brick:active{
